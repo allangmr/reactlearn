@@ -1,12 +1,21 @@
-const arreglo = [1,2,3,4];
+//import {heroes} from './data/heroes';
+import { heroes} from './data/heroes';
+
+// este automatico no es ecma script 6 const { heroes } = require("./data/heroes")
 
 
-let arreglo2 = [...arreglo, 5];
+//menos optimizada
+/* const getHeroeById = (id) =>{
+    return heroes.find((element) => element.id === id);
+} */
+//mas optimizada
+const getHeroeById = (id) => heroes.find((element) => element.id === id);
 
-const arreglo3 = arreglo2.map(function(numero){
-    return numero * 5;
-});
 
-console.log(arreglo);
-console.log(arreglo2);
-console.log(arreglo3);
+console.log(getHeroeById(2));
+
+
+const getHeroeByOwner = (owner) => heroes.filter((element) => element.owner === owner);
+
+
+console.log(getHeroeByOwner('Marvel'));
