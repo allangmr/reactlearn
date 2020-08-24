@@ -1,21 +1,20 @@
-//import {heroes} from './data/heroes';
-import { heroes} from './data/heroes';
-
-// este automatico no es ecma script 6 const { heroes } = require("./data/heroes")
+import { getHeroeById } from './bases/08-imp-exp'
 
 
-//menos optimizada
-/* const getHeroeById = (id) =>{
-    return heroes.find((element) => element.id === id);
-} */
-//mas optimizada
-const getHeroeById = (id) => heroes.find((element) => element.id === id);
+const promesa = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        //Tarea
+        //Importen el get Heroe By Id
+        const heroe = getHeroeById(2);
+        //resolve(heroe)
+        resolve(heroe)
+        //reject('No se pudo encontrar el heroe')
+        
+    },2000)
 
+});
 
-console.log(getHeroeById(2));
-
-
-const getHeroeByOwner = (owner) => heroes.filter((element) => element.owner === owner);
-
-
-console.log(getHeroeByOwner('Marvel'));
+promesa.then((heroe)=>{
+    console.log('heroe', heroe)
+})
+.catch(err => console.warn(err))
